@@ -234,6 +234,11 @@ a.btn.btn-block.btn-social.btn-facebook {
     font-weight: 600;
 }
 
+.logo-nova-agil{
+    width: 50%;
+}
+
+
 h1 {
     text-align: center;
     font-size: 40px;
@@ -275,6 +280,19 @@ p.account a {
 
 p.account a:hover {
     text-decoration: underline;
+}
+
+.login-google {
+    border-radius: 6px;
+    width: 100%;
+    outline: none;
+    height: 50px;
+    padding-bottom: 5px;
+    background-color: #f1f1f1;
+    border: 0px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #242424;
 }
 
 a.forgot {
@@ -373,7 +391,7 @@ p.continue span:after {
 }
 
 .social-login {
-    display: grid;
+    /* display: grid; */
     grid-auto-flow: column;
     grid-gap: 15px;
     margin-bottom: 10px;
@@ -422,28 +440,37 @@ span.fab{
     font-size: 15px;
     color: #fff;
     background: #ea4335;
+    margin: 2px 10px;
 }
 
-.google:hover {
+.img-google {
+    height: 20px;
+    position: relative;
+    bottom: -5px;
+    left: 5px;
+}
+
+
+
+/* .google:hover {
     background: #ea4335;
     color: #fff;
-}
+} 
 .facebook:hover,.twitter:hover,.google:hover  {
     opacity: .8;
 }
 ::-webkit-input-placeholder {
-    /* Edge */
+ 
     color: #aaa;
 }
 
 :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
     color: #aaa;
-}
+} */
 
-::placeholder {
+/* ::placeholder {
     color: #aaa;
-}
+} */
 
 /** Responsive **/
 @media screen and (max-width: 1440px) {}
