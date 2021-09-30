@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva Venta</title>
-    <link rel="stylesheet" href="css/tailwind.min.css">
-</head>
-<body class="min-h-100 bg-gray-200">
-    <div class="md:flex min-h-screen md:align-top">
-        <aside class="md:w-2/5 lg:w-2/5 xl:w-1/5 bg-teal-600 px-5 py-10">
-            <h1 class="uppercase text-white tracking-wide text-2xl  font-bold mt-2">Nueva Venta</h1>
-            <p class="mt-10 text-white"></p>
-            <nav class="mt-8">
-                <a  
-                    href="index.html" 
-                    class="px-3 py-1 text-white block hover:bg-teal-700 hover:text-yellow-400 "
-                >Ventas</a>
-                <a 
-                    href="nueva-venta.html" 
-                    class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400 bg-teal-700"
-                >Nueva Venta</a>
-            </nav>
-        </aside> <!--sidebar-->
-        <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
+import React from 'react'
+import LayoutVentas from './LayoutVentas'
+
+const NuevaVenta = () => {
+    return (
+        <>
+        <LayoutVentas>
+          <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
             <h2 class="text-3xl font-light text-center">Nueva Venta</h2>
 
             <div class="flex flex-col mt-10 items-center">
@@ -145,7 +128,9 @@
                 </div>
             </div>
         </main>
-    </div>
-    <script src="js/nuevaventa.js"></script>
-</body>
-</html>
+        </LayoutVentas>  
+        </>
+    )
+}
+
+export default NuevaVenta
