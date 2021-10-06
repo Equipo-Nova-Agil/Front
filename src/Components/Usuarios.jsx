@@ -1,6 +1,5 @@
 import React from 'react'
 import "./tailwind.min.css" 
-import SideBar from './SideBar'
 import Layout from './Layout'
 
 const Usuarios = () => {

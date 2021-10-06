@@ -1,5 +1,4 @@
 import React from 'react'
-import SideBar from './SideBar'
 import Layout from './Layout'
 
 const NuevoUsuario = () => {

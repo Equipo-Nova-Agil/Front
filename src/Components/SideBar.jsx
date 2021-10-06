@@ -18,6 +18,10 @@ const SideBar = () => {
                 href="NuevoUsuario" 
                 class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
                 >Nuevo usuario</a>
+                <a 
+                href="editar-usuario.html" 
+                class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >Editar usuario</a>
             </nav>
         </aside>    
         </>
