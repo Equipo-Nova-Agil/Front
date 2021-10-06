@@ -9,8 +9,8 @@ import Layout from './Components/Layout.jsx';
 function App() {
   return (
     <>
-    {/* <Usuarios></Usuarios> */}
-    <NuevoUsuario></NuevoUsuario>
+    <Usuarios></Usuarios>
+    {/* <NuevoUsuario></NuevoUsuario> */}
     </>
   );
 }
