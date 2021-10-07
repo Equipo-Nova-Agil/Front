@@ -1,6 +1,6 @@
 import React from 'react'
 import "./tailwind.min.css" 
-import LayoutProductos from './LayoutProductos'
+
 
 const SideBarProductos = () => {
     return (
@@ -17,6 +17,10 @@ const SideBarProductos = () => {
                     href="nuevo-producto.html" 
                     class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
                 >Nuevo Producto</a>
+                <a 
+                href="editar-producto.html" 
+                class="px-3 py-1 text-white block hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                >Editar Producto</a> 
             </nav>
         </aside>  
         </>
