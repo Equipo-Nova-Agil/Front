@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+  import logo from './logo.svg';
 import './App.css';
 import Login from "./Components/Login"
 import Productos from './Components/Productos';
@@ -9,9 +9,9 @@ function App() {
   return (
     <>
     {/* <Login></Login> */}
-    <EditarProducto></EditarProducto>
+    {/* <EditarProducto></EditarProducto> */}
     {/* <Productos></Productos> */}
-    {/* <NuevoProducto></NuevoProducto> */}
+    <NuevoProducto></NuevoProducto>
     </>
   );
 }
