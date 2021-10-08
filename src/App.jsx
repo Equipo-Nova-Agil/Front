@@ -10,9 +10,9 @@ import EditarUsuario from './Components/EditarUsuario';
 function App() {
   return (
     <>
-    <Usuarios></Usuarios>
+    {/* <Usuarios></Usuarios> */}
     {/* <NuevoUsuario></NuevoUsuario> */}
-    {/* <EditarUsuario></EditarUsuario> */}
+    <EditarUsuario></EditarUsuario>
     </>
   );
 }
