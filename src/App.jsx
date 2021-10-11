@@ -11,8 +11,8 @@ function App() {
   return (
     <>
     {/* <Usuarios></Usuarios> */}
-    {/* <NuevoUsuario></NuevoUsuario> */}
-    <EditarUsuario></EditarUsuario>
+    <NuevoUsuario></NuevoUsuario>
+    {/* <EditarUsuario></EditarUsuario> */}
     </>
   );
 }
