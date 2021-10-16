@@ -1,10 +1,10 @@
 import React from 'react'
-import LayoutProductos from './LayoutProductos'
+
 
 const EditarProducto = () => {
     return (
         <>
-        <LayoutProductos>
+        {/* <LayoutProductos> */}
         <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
             <h2 class="text-3xl font-light text-center">Editar Producto</h2>
 
@@ -71,7 +71,7 @@ const EditarProducto = () => {
                 </div>
             </div>
         </main>
-        </LayoutProductos>
+        {/* </LayoutProductos> */}
             
         </>
     )

@@ -1,10 +1,10 @@
 import React from 'react'
-import Layout from './Layout'
+
 
 const EditarUsuario = () => {
     return (
         <>
-        <Layout>
+        {/* <Layout> */}
         <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
             <h2 class="text-3xl font-light text-center">Editar Usuario</h2>
 
@@ -154,7 +154,7 @@ const EditarUsuario = () => {
                 </div>
             </div>
         </main>
-        </Layout>
+        {/* </Layout> */}
         </>
     )
 }

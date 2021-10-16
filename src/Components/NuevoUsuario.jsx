@@ -1,13 +1,10 @@
 import React from 'react'
-import Layout from './Layout'
+
 
 const NuevoUsuario = () => {
     return (
         <>
-        {/* <div class="min-h-100 bg-gray-200">
-             <div class="md:flex min-h-screen md:align-top">
-             <SideBar></SideBar> */}
-             <Layout>
+             {/* <Layout> */}
              <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
                 <h2 class="text-3xl font-light text-center">Registrar Usuario</h2>
                 <div class="flex flex-col mt-10 items-center">
@@ -151,9 +148,8 @@ const NuevoUsuario = () => {
                     </div>
                 </div>
                 </main>
-            </Layout>
-            {/* </div> 
-        </div>      */}
+            {/* </Layout> */}
+
         </>
     )
 }

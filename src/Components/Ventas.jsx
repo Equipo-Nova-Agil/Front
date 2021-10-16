@@ -1,12 +1,22 @@
 import React from 'react'
-import LayoutVentas from './LayoutVentas'
 
 
 const Ventas = () => {
     return (
         <>
-        <LayoutVentas>
+        {/* <LayoutVentas> */}
            <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
+           <div class="flex flex-row-reverse space-x-4 space-x-reverse">
+                    <div>
+                        <button class="bg-teal-600 hover:bg-teal-900 w-full  p-2 text-white uppercase font-bold">Buscar</button>
+                    </div>
+                    <div>
+                        <input 
+                            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="buscar" name="buscar" type="text" placeholder="Buscar"/>                            
+                    </div>
+
+                </div>
             <h2 class="text-3xl font-light text-center">Ventas</h2>
 
             <div class="flex flex-col mt-10">
@@ -53,7 +63,7 @@ const Ventas = () => {
                 </div>
               </div>
         </main> 
-        </LayoutVentas>
+        {/* </LayoutVentas> */}
         </>
     )
 }
