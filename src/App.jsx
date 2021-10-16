@@ -1,4 +1,6 @@
 import './App.css';
+import React, {useState, useEffect} from 'react'
+import axios from "axios"
 import Login from "./Components/Login"
 import LayoutUniversal from './Components/LayoutUniversal';
 
@@ -16,18 +18,39 @@ import NuevaVenta from "./Components/NuevaVenta"
 
 import rutas from "./constantes/Rutas"
 
+
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
 
 function App() {
+
+  const [datosApi, setDatosApi] = useState([])
+  const baseUrl = "http://localhost:3000/posts"
+
+  // METODO GET
+  const getDatos = async() => {
+    await axios.get(baseUrl)
+        .then(res => {
+            console.log(res.data)
+            setDatosApi(res.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+  }
+
+  useEffect(async() => {
+    await getDatos()
+  },[])
+
   return (
     <Router>
     
       <LayoutUniversal>
         <Switch>
           <Route path={rutas.usuarios} exact>
-            <Usuarios/>
+            <Usuarios datosApi={datosApi}/>
           </Route>
           <Route path={rutas.editarUsuario} exact>
             <EditarUsuario/>
