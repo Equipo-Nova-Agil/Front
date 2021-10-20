@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
-import Login from "./Components/Login"
+//import Login from "./Components/Login"
 import LayoutUniversal from './Components/LayoutUniversal';
 
 import Usuarios from "./Components/Usuarios"
@@ -27,12 +27,19 @@ function App() {
 
   const [datosApi, setDatosApi] = useState([])
   const baseUrl = "http://localhost:3000/posts"
+  //const baseUrl = "https://sleepy-forest-23219.herokuapp.com/api/usuario/"
 
-  // METODO GET
+
+  // METODO GET USUARIOS
   const getDatos = async() => {
     await axios.get(baseUrl)
         .then(res => {
-            console.log(res.data)
+            // con la api de mintic
+            // console.log("DATA", res.data.Usuarios)
+            // setDatosApi(res.data.Usuarios)
+
+            // con json server
+            console.log("DATA", res.data)
             setDatosApi(res.data)
         })
         .catch(error => {
@@ -43,6 +50,39 @@ function App() {
   useEffect(async() => {
     await getDatos()
   },[])
+
+  // METODO POST USUARIOS
+  const enviarDatos = async(e) => {
+    e.preventDefault()
+    const formData = {
+      nombre: e.target.nombre.value,
+      apellido: e.target.apellido.value,
+      edad: e.target.edad.value,
+      genero: e.target.genero.value,
+      correo: e.target.correo.value,
+      telefono: e.target.telefono.value,
+      tipo: e.target.tipo.value,
+      direccion: e.target.direccion.value,
+      password: e.target.password.value,
+      id_rol_id: e.target.id_rol_id.value,
+      id_estado_id: e.target.id_estado_id.value
+    }
+  
+    await axios.post(baseUrl, formData)
+      .then(res => {
+          setDatosApi((currentData) => [
+              ...currentData, formData
+          ])
+      })
+      .catch(error => {
+          console.log(error)
+      })
+
+    e.target.reset()
+  }
+  // ---------------------------------------------------
+
+
 
   return (
     <Router>
@@ -56,7 +96,7 @@ function App() {
             <EditarUsuario/>
           </Route>
           <Route path={rutas.nuevoUsuario} exact>
-            <NuevoUsuario/>
+            <NuevoUsuario enviarDatos={enviarDatos}/>
           </Route>
 
 

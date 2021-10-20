@@ -8,15 +8,15 @@ const SideBarUniversal = () => {
     return (
         <> 
        
-        <aside class="md:w-2/5 lg:w-2/5 xl:w-1/5 bg-teal-600 px-5 py-10">
+        <aside className="md:w-2/5 lg:w-2/5 xl:w-1/5 bg-teal-600 px-5 py-10">
             
-            <h1 class="uppercase text-white text-left tracking-wide text-2xl  font-bold mt-2">Gestión </h1>
-            <h1 class="mt-10 text-white text-center font-bold">PANEL</h1>
-            <nav class="mt-8 text-center">
-                <details className=''>
+            <h1 className="uppercase text-white text-left tracking-wide text-2xl  font-bold mt-2">Gestión </h1>
+            <h1 className="mt-10 text-white text-center font-bold">PANEL</h1>
+            <nav className="mt-8 text-center">
+                <details>
                     <summary>
                         <span
-                        class="px-3 py-1 text-white hover:bg-teal-700 hover:text-yellow-400"
+                        className="px-3 py-1 text-white hover:bg-teal-700 hover:text-yellow-400"
                         >Usuarios</span>
                     </summary>
                     <ul>
@@ -36,7 +36,7 @@ const SideBarUniversal = () => {
                 <details>
                     <summary>
                         <span 
-                        class="px-3 py-1 text-white hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                        className="px-3 py-1 text-white hover:bg-teal-900 mt-2 hover:text-yellow-400"
                         >Ventas</span>
                     </summary>
                     <ul>
@@ -56,7 +56,7 @@ const SideBarUniversal = () => {
                 <details>
                     <summary>
                         <span 
-                        class="px-3 py-1 text-white hover:bg-teal-900 mt-2 hover:text-yellow-400"
+                        className="px-3 py-1 text-white hover:bg-teal-900 mt-2 hover:text-yellow-400"
                         >Productos</span>
                     </summary>                     
                     <ul>
