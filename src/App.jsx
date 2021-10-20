@@ -25,10 +25,30 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 function App() {
 
+  //Filtro
+  const [tablaUsuarios, setTablaUsuarios] = useState([])
+  const [busqueda, setBusqueda] = useState("")
+
   const [datosApi, setDatosApi] = useState([])
   const baseUrl = "http://localhost:3000/posts"
   //const baseUrl = "https://sleepy-forest-23219.herokuapp.com/api/usuario/"
 
+
+  //Filtro
+  const filtroBusqueda = (e) => {
+    setBusqueda(e.target.value)
+    filtrar(e.target.value)
+  }
+
+  const filtrar = (terminoBusqueda) => {
+    let resultadosBusqueda = tablaUsuarios.filter(elemento => {
+      if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento
+      }
+    })
+    setDatosApi(resultadosBusqueda)
+  }
+  // ----------------------------------------------------------------------------------------------
 
   // METODO GET USUARIOS
   const getDatos = async() => {
@@ -39,8 +59,11 @@ function App() {
             // setDatosApi(res.data.Usuarios)
 
             // con json server
-            console.log("DATA", res.data)
+            //console.log("DATA", res.data)
             setDatosApi(res.data)
+
+            //Filtro
+            setTablaUsuarios(res.data)
         })
         .catch(error => {
             console.log(error)
@@ -90,7 +113,7 @@ function App() {
       <LayoutUniversal>
         <Switch>
           <Route path={rutas.usuarios} exact>
-            <Usuarios datosApi={datosApi}/>
+            <Usuarios datosApi={datosApi} filtroBusqueda={filtroBusqueda} busqueda={busqueda}/>
           </Route>
           <Route path={rutas.editarUsuario} exact>
             <EditarUsuario/>
