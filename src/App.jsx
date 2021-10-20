@@ -17,6 +17,7 @@ import EditarVenta from "./Components/EditarVenta"
 import NuevaVenta from "./Components/NuevaVenta"
 
 import rutas from "./constantes/Rutas"
+import { v4 as uuidv4 } from 'uuid';
 
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
@@ -25,16 +26,16 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 function App() {
 
+  
+  const [datosApi, setDatosApi] = useState([])
+  //const baseUrl = "http://localhost:3000/posts"
+  const baseUrl = "https://sleepy-forest-23219.herokuapp.com/api/usuario/"
+  
+  
   //Filtro
   const [tablaUsuarios, setTablaUsuarios] = useState([])
   const [busqueda, setBusqueda] = useState("")
 
-  const [datosApi, setDatosApi] = useState([])
-  const baseUrl = "http://localhost:3000/posts"
-  //const baseUrl = "https://sleepy-forest-23219.herokuapp.com/api/usuario/"
-
-
-  //Filtro
   const filtroBusqueda = (e) => {
     setBusqueda(e.target.value)
     filtrar(e.target.value)
@@ -55,15 +56,15 @@ function App() {
     await axios.get(baseUrl)
         .then(res => {
             // con la api de mintic
-            // console.log("DATA", res.data.Usuarios)
-            // setDatosApi(res.data.Usuarios)
+            console.log("DATA", res.data.Usuarios)
+            setDatosApi(res.data.Usuarios)
 
             // con json server
             //console.log("DATA", res.data)
-            setDatosApi(res.data)
+            //setDatosApi(res.data)
 
             //Filtro
-            setTablaUsuarios(res.data)
+            setTablaUsuarios(res.data.Usuarios)
         })
         .catch(error => {
             console.log(error)
@@ -74,21 +75,31 @@ function App() {
     await getDatos()
   },[])
 
+  // const cutNumber = (number) => {
+  //   number = parseInt(uuidv4(), 1)
+  //   let id;
+  //   for (let i= 0; i < number; i++){
+
+  //   }
+  // }
+
   // METODO POST USUARIOS
   const enviarDatos = async(e) => {
     e.preventDefault()
     const formData = {
+      id_usuarios: parseInt(uuidv4(), 16),
       nombre: e.target.nombre.value,
       apellido: e.target.apellido.value,
       edad: e.target.edad.value,
       genero: e.target.genero.value,
       correo: e.target.correo.value,
       telefono: e.target.telefono.value,
+      fecha_registro: e.target.fecha_registro.value,
       tipo: e.target.tipo.value,
       direccion: e.target.direccion.value,
       password: e.target.password.value,
-      id_rol_id: e.target.id_rol_id.value,
-      id_estado_id: e.target.id_estado_id.value
+      id_rol: e.target.id_rol.value,
+      id_estado: e.target.id_estado.value
     }
   
     await axios.post(baseUrl, formData)
@@ -100,11 +111,23 @@ function App() {
       .catch(error => {
           console.log(error)
       })
+      console.log(parseInt(uuidv4(), 16))
+      console.log(typeof(parseInt(uuidv4(), 16)))
 
     e.target.reset()
   }
   // ---------------------------------------------------
 
+  // METODO DELETE USUARIOS
+  const deleteUsuario = async(id) => {
+    await axios.delete(`${baseUrl}${id}`)
+      .then(res => {
+        setDatosApi(datosApi.filter(user => user.id !== id))
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
 
   return (
@@ -113,7 +136,7 @@ function App() {
       <LayoutUniversal>
         <Switch>
           <Route path={rutas.usuarios} exact>
-            <Usuarios datosApi={datosApi} filtroBusqueda={filtroBusqueda} busqueda={busqueda}/>
+            <Usuarios deleteUsuario={deleteUsuario} datosApi={datosApi} filtroBusqueda={filtroBusqueda} />
           </Route>
           <Route path={rutas.editarUsuario} exact>
             <EditarUsuario/>

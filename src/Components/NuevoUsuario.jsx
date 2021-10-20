@@ -76,6 +76,16 @@ const NuevoUsuario = ({enviarDatos}) => {
                                     />
                                 </div>
                                 <div className="mb-4">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fecha_registro">Fecha de registro</label>
+                                    <input 
+                                        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        id="fecha_registro"
+                                        name="fecha_registro"
+                                        type="date"
+                                        placeholder="fecha de registro"
+                                    />
+                                </div>
+                                <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tipo">Tipo</label>
                                     <input 
                                         className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -110,7 +120,7 @@ const NuevoUsuario = ({enviarDatos}) => {
                                     <input 
                                         className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         list="lista_roles"
-                                        name="id_rol_id"
+                                        name="id_rol"
                                         placeholder="Seleccionar rol"
                                     />
                                     <datalist id="lista_roles">
@@ -124,7 +134,7 @@ const NuevoUsuario = ({enviarDatos}) => {
                                     <input 
                                         className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         list="lista_estado"
-                                        name="id_estado_id"
+                                        name="id_estado"
                                         placeholder="Seleccionar estado"
                                     />
                                     <datalist id="lista_estado">

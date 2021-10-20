@@ -3,9 +3,10 @@ import "./tailwind.min.css"
 
 
 
-const Usuarios = ({datosApi, busqueda, filtroBusqueda}) => {
+const Usuarios = ({datosApi, filtroBusqueda, deleteUsuario}) => {
 
     //console.log("Desde usuarios:",datosApi)
+    
 
 
     return (
@@ -16,7 +17,7 @@ const Usuarios = ({datosApi, busqueda, filtroBusqueda}) => {
             <div>
                 <input 
                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="buscar" value={busqueda} onChange={filtroBusqueda} name="buscar" type="text" placeholder="Buscar"/>                            
+                    id="buscar" onChange={filtroBusqueda} name="buscar" type="text" placeholder="Buscar"/>                            
             </div>
         </div>
             <h2 className="text-3xl font-light text-center">Usuarios</h2>
@@ -63,6 +64,9 @@ const Usuarios = ({datosApi, busqueda, filtroBusqueda}) => {
                                 <th className="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
                                     Estado
                                 </th>
+                                <th className="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Eliminar
+                                </th>
                             </tr>
                         </thead>
                         <tbody className="bg-white text-center">
@@ -79,7 +83,8 @@ const Usuarios = ({datosApi, busqueda, filtroBusqueda}) => {
                                     <td className="text-center">{u.tipo}</td> 
                                     <td className="text-center">{u.direccion}</td> 
                                     <td className="text-center">{u.id_rol_id}</td> 
-                                    <td className="text-center">{u.id_estado_id}</td>                                     
+                                    <td className="text-center">{u.id_estado_id}</td>
+                                    <td className="text-center"><button onClick={() => deleteUsuario(u.id)}><i className="fas fa-trash"></i></button></td>                                      
                                 </tr>
                             ))}  
                         </tbody>
