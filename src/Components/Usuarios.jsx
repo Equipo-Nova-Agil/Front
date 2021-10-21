@@ -71,7 +71,7 @@ const Usuarios = ({datosApi, filtroBusqueda, deleteUsuario}) => {
                         </thead>
                         <tbody className="bg-white text-center">
                             {datosApi.map(u=> (  
-                                <tr key={u.id}>
+                                <tr key={u.id_usuarios}> 
                                     <td className="text-center">{u.id_usuarios}</td>
                                     <td className="text-center">{u.nombre}</td>
                                     <td className="text-center">{u.apellido}</td> 
@@ -84,7 +84,7 @@ const Usuarios = ({datosApi, filtroBusqueda, deleteUsuario}) => {
                                     <td className="text-center">{u.direccion}</td> 
                                     <td className="text-center">{u.id_rol_id}</td> 
                                     <td className="text-center">{u.id_estado_id}</td>
-                                    <td className="text-center"><button onClick={() => deleteUsuario(u.id)}><i className="fas fa-trash"></i></button></td>                                      
+                                    <td className="text-center"><button onClick={() => deleteUsuario(u.id_usuarios)}><i className="fas fa-trash"></i></button></td>                                      
                                 </tr>
                             ))}  
                         </tbody>

@@ -114,7 +114,8 @@ function App() {
       console.log(parseInt(uuidv4(), 16))
       console.log(typeof(parseInt(uuidv4(), 16)))
 
-    e.target.reset()
+    //e.target.reset()
+    console.log("ID real",formData.id_usuarios)
   }
   // ---------------------------------------------------
 
@@ -129,7 +130,10 @@ function App() {
       })
   }
 
-
+  console.log(`${baseUrl}${parseInt(uuidv4(), 16)}`)
+  // let idDefinitivo = enviarDatos()
+  // console.log(idDefinitivo)
+  
   return (
     <Router>
     
