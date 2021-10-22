@@ -3,10 +3,14 @@ import "./tailwind.min.css"
 
 
 
-const Usuarios = ({datosApi, filtroBusqueda, deleteUsuario}) => {
+const Usuarios = ({datosUsuarios, filtroBusqueda, deleteUsuario}) => {
 
-    //console.log("Desde usuarios:",datosApi)
-    
+    //console.log("Desde usuarios:",datosUsuarioss)
+    const recargar = () => {
+        setTimeout(() => {
+            window.location.reload(false);
+        },100)
+    }
 
 
     return (
@@ -70,7 +74,7 @@ const Usuarios = ({datosApi, filtroBusqueda, deleteUsuario}) => {
                             </tr>
                         </thead>
                         <tbody className="bg-white text-center">
-                            {datosApi.map(u=> (  
+                            {datosUsuarios.map(u=> (  
                                 <tr key={u.id_usuarios}> 
                                     <td className="text-center">{u.id_usuarios}</td>
                                     <td className="text-center">{u.nombre}</td>
@@ -84,7 +88,7 @@ const Usuarios = ({datosApi, filtroBusqueda, deleteUsuario}) => {
                                     <td className="text-center">{u.direccion}</td> 
                                     <td className="text-center">{u.id_rol_id}</td> 
                                     <td className="text-center">{u.id_estado_id}</td>
-                                    <td className="text-center"><button onClick={() => deleteUsuario(u.id_usuarios)}><i className="fas fa-trash"></i></button></td>                                      
+                                    <td className="text-center"><button onClick={() => {deleteUsuario(u.id_usuarios); recargar()}}><i className="fas fa-trash"></i></button></td>                                      
                                 </tr>
                             ))}  
                         </tbody>

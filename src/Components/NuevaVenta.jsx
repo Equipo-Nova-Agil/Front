@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-const NuevaVenta = () => {
+const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
+    
     return (
         <>
         {/* <LayoutVentas> */}
@@ -11,7 +12,7 @@ const NuevaVenta = () => {
             <div className="flex flex-col mt-10 items-center">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
-                        <form id="formulario" className="bg-white p-3">
+                        <form id="formulario" className="bg-white p-3" onSubmit={enviarDatosVentas}>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_venta">Identificador de la venta</label>
                                 <input 
@@ -23,14 +24,20 @@ const NuevaVenta = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="valor">Valor total de la venta</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_cliente">Id del Usuario</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="valor"
-                                    name="valor"
-                                    type="number" min="0" step="1"
-                                    placeholder="Valor total"
+                                    list="cliente_id"
+                                    name="id_cliente"
+                                    type="text"
+                                    placeholder="Id. Usuario"
                                 />
+                                <datalist id="cliente_id">
+                                    {datosUsuarios.map(id => (
+                                        <option key={id.id_usuarios} value={id.id_usuarios}></option>       
+                                    ))}
+   
+                                </datalist>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_producto">Identificador del Producto</label>
@@ -53,6 +60,16 @@ const NuevaVenta = () => {
                                 />
                             </div>
                             <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="valor">Valor total de la venta</label>
+                                <input 
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="valor"
+                                    name="valor"
+                                    type="number" min="0" step="1"
+                                    placeholder="Valor total"
+                                />
+                            </div>
+                            {/* <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="valor">Precio unitario de producto</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -70,16 +87,6 @@ const NuevaVenta = () => {
                                     name="fecha"
                                     type="date"
                                     placeholder="Fecha de venta"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_cliente">Identificación del cliente</label>
-                                <input 
-                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="id_cliente"
-                                    name="id_cliente"
-                                    type="text"
-                                    placeholder="Id. Cliente"
                                 />
                             </div>
                             <div className="mb-4">
@@ -115,14 +122,14 @@ const NuevaVenta = () => {
                                     <option value="Cancelada"></option>
                                     <option value="Entregada"></option>
                                 </datalist>
-                            </div>
+                            </div> */}
 
 
-                            <input
+                            <button
                                 type="submit"
                                 className="bg-teal-600 hover:bg-teal-900 w-full mt-5 p-2 text-white uppercase font-bold"
                                 value="Agregar Venta"
-                            />
+                            >Agregar venta</button>
                         </form>
                     </div>
                 </div>

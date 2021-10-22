@@ -1,7 +1,9 @@
 import React from 'react'
 
 
-const EditarUsuario = () => {
+const EditarUsuario = ({datosUsuarios}) => {
+    
+
     return (
         <>
         {/* <Layout> */}
@@ -12,6 +14,22 @@ const EditarUsuario = () => {
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
                         <form id="formulario" className="bg-white p-3">
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id">ID</label>
+                                <input 
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    list="lista_id"
+                                    name="id"
+                                    type="text"
+                                    placeholder="Id usuario"
+                                    />
+                                <datalist id="lista_id">
+                                    {datosUsuarios.map(id => (
+                                        <option key={id.id_usuarios} value={id.id_usuarios}></option>       
+                                    ))}
+   
+                                </datalist>
+                            </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">Nombre</label>
                                 <input 

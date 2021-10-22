@@ -26,8 +26,8 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 function App() {
 
-  
-  const [datosApi, setDatosApi] = useState([])
+  // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
+  const [datosUsuarios, setDatosUsuarios] = useState([])
   //const baseUrl = "http://localhost:3000/posts"
   const baseUrl = "https://sleepy-forest-23219.herokuapp.com/api/usuario/"
   
@@ -43,25 +43,25 @@ function App() {
 
   const filtrar = (terminoBusqueda) => {
     let resultadosBusqueda = tablaUsuarios.filter(elemento => {
-      if (elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if (elemento.id_usuarios.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento
       }
     })
-    setDatosApi(resultadosBusqueda)
+    setDatosUsuarios(resultadosBusqueda)
   }
   // ----------------------------------------------------------------------------------------------
 
   // METODO GET USUARIOS
-  const getDatos = async() => {
+  const getUsuarios = async() => {
     await axios.get(baseUrl)
         .then(res => {
             // con la api de mintic
             console.log("DATA", res.data.Usuarios)
-            setDatosApi(res.data.Usuarios)
+            setDatosUsuarios(res.data.Usuarios)
 
             // con json server
             //console.log("DATA", res.data)
-            //setDatosApi(res.data)
+            //setDatosUsuarios(res.data)
 
             //Filtro
             setTablaUsuarios(res.data.Usuarios)
@@ -72,19 +72,12 @@ function App() {
   }
 
   useEffect(async() => {
-    await getDatos()
+    await getUsuarios()
   },[])
 
-  // const cutNumber = (number) => {
-  //   number = parseInt(uuidv4(), 1)
-  //   let id;
-  //   for (let i= 0; i < number; i++){
-
-  //   }
-  // }
 
   // METODO POST USUARIOS
-  const enviarDatos = async(e) => {
+  const enviarDatosUsuarios = async(e) => {
     e.preventDefault()
     const formData = {
       id_usuarios: parseInt(uuidv4(), 16),
@@ -104,18 +97,18 @@ function App() {
   
     await axios.post(baseUrl, formData)
       .then(res => {
-          setDatosApi((currentData) => [
+          setDatosUsuarios((currentData) => [
               ...currentData, formData
           ])
       })
       .catch(error => {
           console.log(error)
       })
-      console.log(parseInt(uuidv4(), 16))
-      console.log(typeof(parseInt(uuidv4(), 16)))
+      // console.log(parseInt(uuidv4(), 16))
+      // console.log(typeof(parseInt(uuidv4(), 16)))
 
     //e.target.reset()
-    console.log("ID real",formData.id_usuarios)
+    //console.log("ID real",formData.id_usuarios)
   }
   // ---------------------------------------------------
 
@@ -123,16 +116,112 @@ function App() {
   const deleteUsuario = async(id) => {
     await axios.delete(`${baseUrl}${id}`)
       .then(res => {
-        setDatosApi(datosApi.filter(user => user.id !== id))
+        setDatosUsuarios(datosUsuarios.filter(user => user.id !== id))
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  console.log(`${baseUrl}${parseInt(uuidv4(), 16)}`)
-  // let idDefinitivo = enviarDatos()
+  //console.log(`${baseUrl}${parseInt(uuidv4(), 16)}`)
+  // let idDefinitivo = enviarDatosUsuarios()
   // console.log(idDefinitivo)
+
+  // FINAL CODIGO DE USUARIOS*********************************************************************************************************
+
+
+
+
+  // COMIENZO CODIGO DE VENTAS*********************************************************************************************
+  const [datosVentas, setDatosVentas] = useState([])
+  //const baseUrl = "http://localhost:3000/posts"
+  const baseUrlVentas = "https://sleepy-forest-23219.herokuapp.com/api/venta/"
+  
+  
+  //Filtro
+  const [tablaVentas, setTablaVentas] = useState([])
+  const [busquedaVentas, setBusquedaVentas] = useState("")
+
+  const filtroBusquedaVentas = (e) => {
+    setBusquedaVentas(e.target.value)
+    filtrarVentas(e.target.value)
+  }
+
+  const filtrarVentas = (terminoBusqueda) => {
+    let resultadosBusqueda = tablaVentas.filter(elemento => {
+      if (elemento.id_venta.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento
+      }
+    })
+    setDatosVentas(resultadosBusqueda)
+  }
+  // ----------------------------------------------------------------------------------------------
+
+  // METODO GET VENTAS
+  const getVentas = async() => {
+    await axios.get(baseUrlVentas)
+        .then(res => {
+            // con la api de mintic
+            console.log("Ventas", res.data.Ventas)
+            setDatosVentas(res.data.Ventas)
+
+            //Filtro
+            setTablaVentas(res.data.Ventas)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+  }
+
+  useEffect(async() => {
+    await getVentas()
+  },[])
+
+
+  // METODO POST VENTAS
+  const enviarDatosVentas = async(e) => {
+    e.preventDefault()
+    const formDataVentas = {
+      id_venta: parseInt(uuidv4(), 16),
+      id_cliente: e.target.id_cliente.value,
+      id_producto: e.target.id_producto.value,
+      cantidad: e.target.cantidad.value,
+      valor: e.target.genero.value,
+    }
+  
+    await axios.post(baseUrlVentas, formDataVentas)
+      .then(res => {
+          setDatosVentas((currentData) => [
+              ...currentData, formDataVentas
+          ])
+      })
+      .catch(error => {
+          console.log(error)
+      })
+      //console.log(parseInt(uuidv4(), 16))
+      //console.log(typeof(parseInt(uuidv4(), 16)))
+
+    //e.target.reset()
+    //console.log("ID real",formDataVentas.id_usuarios)
+  }
+  // ---------------------------------------------------
+
+  // METODO DELETE VENTAS
+  const deleteVenta = async(id) => {
+    await axios.delete(`${baseUrlVentas}${id}`)
+      .then(res => {
+        setDatosVentas(datosVentas.filter(v => v.id !== id))
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  
+
+  // FINAL CODIGO DE VENTAS*********************************************************************************************************
+
+
   
   return (
     <Router>
@@ -140,14 +229,27 @@ function App() {
       <LayoutUniversal>
         <Switch>
           <Route path={rutas.usuarios} exact>
-            <Usuarios deleteUsuario={deleteUsuario} datosApi={datosApi} filtroBusqueda={filtroBusqueda} />
+            <Usuarios deleteUsuario={deleteUsuario} datosUsuarios={datosUsuarios} filtroBusqueda={filtroBusqueda} getUsuarios={getUsuarios}/>
           </Route>
           <Route path={rutas.editarUsuario} exact>
-            <EditarUsuario/>
+            <EditarUsuario datosUsuarios={datosUsuarios}/>
           </Route>
           <Route path={rutas.nuevoUsuario} exact>
-            <NuevoUsuario enviarDatos={enviarDatos}/>
+            <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios}/>
           </Route>
+
+
+
+          <Route path={rutas.ventas} exact>
+            <Ventas deleteVenta={deleteVenta} datosVentas={datosVentas} filtroBusquedaVentas={filtroBusquedaVentas} getVentas={getVentas}/>
+          </Route>
+          <Route path={rutas.editarVenta} exact>
+            <EditarVenta datosVentas={datosVentas}/>
+          </Route>
+          <Route path={rutas.nuevaVenta} exact>
+            <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} />
+          </Route>
+
 
 
 
@@ -159,18 +261,6 @@ function App() {
           </Route>
           <Route path={rutas.nuevoProducto} exact>
             <NuevoProducto/>
-          </Route>
-
-
-
-          <Route path={rutas.ventas} exact>
-          <Ventas/>
-          </Route>
-          <Route path={rutas.editarVenta} exact>
-            <EditarVenta/>
-          </Route>
-          <Route path={rutas.nuevaVenta} exact>
-            <NuevaVenta/>
           </Route>
 
         </Switch>
