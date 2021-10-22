@@ -43,12 +43,12 @@ function App() {
   }
 
   const filtrar = (terminoBusqueda) => {
-    let resultadosBusqueda = tablaUsuarios.filter(elemento => {
+    let resultadosBusquedaProductos = tablaUsuarios.filter(elemento => {
       if (elemento.id_usuarios.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento
       }
     })
-    setDatosUsuarios(resultadosBusqueda)
+    setDatosUsuarios(resultadosBusquedaProductos)
   }
   // ----------------------------------------------------------------------------------------------
 
@@ -133,8 +133,10 @@ function App() {
 
 
 
-  // COMIENZO CODIGO DE VENTAS*********************************************************************************************
-  // COMIENZO CODIGO DE VENTAS*********************************************************************************************
+  // COMIENZO CODIGO DE VENTAS*********************************
+  // COMIENZO CODIGO DE VENTAS*********************************
+
+
   const [datosVentas, setDatosVentas] = useState([])
   //const baseUrl = "http://localhost:3000/posts"
   const baseUrlVentas = "https://sleepy-forest-23219.herokuapp.com/api/venta/"
@@ -200,11 +202,7 @@ function App() {
       .catch(error => {
           console.log(error)
       })
-      //console.log(parseInt(uuidv4(), 16))
-      //console.log(typeof(parseInt(uuidv4(), 16)))
 
-    //e.target.reset()
-    //console.log("ID real",formDataVentas.id_usuarios)
   }
   // ---------------------------------------------------
 
@@ -219,8 +217,97 @@ function App() {
       })
   }
 
-  // FINAL CODIGO DE VENTAS*********************************************************************************************************
-  // FINAL CODIGO DE VENTAS*********************************************************************************************************
+  // FINAL CODIGO DE VENTAS*************************************
+  // FINAL CODIGO DE VENTAS*************************************
+
+
+  
+
+
+  // COMIENZO CODIGO DE PRODUCTOS*********************************************************************************************
+  // COMIENZO CODIGO DE PRODUCTOS*********************************************************************************************
+  const [datosProductos, setDatosProductos] = useState([])
+  //const baseUrl = "http://localhost:3000/posts"
+  const baseUrlProductos = "https://sleepy-forest-23219.herokuapp.com/api/producto/"
+  
+  
+  //Filtro
+  const [tablaProductos, setTablaProductos] = useState([])
+  const [busquedaProductos, setBusquedaProductos] = useState("")
+
+  const filtroBusquedaProductos = (e) => {
+    setBusquedaProductos(e.target.value)
+    filtrarProductos(e.target.value)
+  }
+
+  const filtrarProductos = (terminoBusqueda) => {
+    let resultadosBusquedaProductos = tablaProductos.filter(elemento => {
+      if (elemento.id_producto.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        return elemento
+      }
+    })
+    setDatosProductos(resultadosBusquedaProductos)
+  }
+  // ----------------------------------------------------------------------------------------------
+
+  // METODO GET PRODUCTOS
+  const getProductos = async() => {
+    await axios.get(baseUrlProductos)
+        .then(res => {
+            // con la api de mintic
+            console.log("Productos", res.data.Productos)
+            setDatosProductos(res.data.Productos)
+
+            //Filtro
+            setTablaProductos(res.data.Productos)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+  }
+
+  useEffect(async() => {
+    await getProductos()
+  },[])
+
+
+  // METODO POST PRODUCTOS
+  const enviarDatosProductos = async(e) => {
+    e.preventDefault()
+    const formDataProductos = {
+      id_producto: parseInt(uuidv4(), 16),
+      id_usuario: e.target.id_usuario.value,
+      id_producto: e.target.id_producto.value,
+      cantidad: e.target.cantidad.value,
+      precio: e.target.precio.value,
+    }
+  
+    await axios.post(baseUrlProductos, formDataProductos)
+      .then(res => {
+          setDatosProductos((currentData) => [
+              ...currentData, formDataProductos
+          ])
+      })
+      .catch(error => {
+          console.log(error)
+      })
+
+  }
+  // ---------------------------------------------------
+
+  // METODO DELETE PRODUCTOS
+  const deleteProducto = async(id) => {
+    await axios.delete(`${baseUrlProductos}${id}`)
+      .then(res => {
+        setDatosProductos(datosProductos.filter(p => p.id !== id))
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  // FINAL CODIGO DE PRODUCTOS*********************************************************************************************************
+  // FINAL CODIGO DE PRODUCTOS*********************************************************************************************************
 
 
   

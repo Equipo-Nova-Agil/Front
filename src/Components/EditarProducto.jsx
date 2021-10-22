@@ -23,38 +23,39 @@ const EditarProducto = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="desc_producto">Descripción del producto</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id.tienda">ID. Tienda</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="desc_producto"
-                                    name="desc_producto"
+                                    id="id.tienda"
+                                    name="id.tienda"
                                     type="text"
-                                    placeholder="Desc. Producto"
+                                    placeholder="ID. Tienda"
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="valor">Valor</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="precio">Precio</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="valor"
-                                    name="valor"
+                                    id="precio"
+                                    name="precio"
                                     type="number" min="0" step="1"
-                                    placeholder="Valor"
+                                    placeholder="precio"
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="estado">Estado</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="seccion">Seccion</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    list="lista_estado"
-                                    name="estado"
+                                    list="lista_seccion"
+                                    name="seccion"
                                     placeholder="Seleccionar"
                                 />
-                                <datalist id="lista_estado">
-                                    <option value="Disponible"></option>
-                                    <option value="No Disponible"></option>
+                                <datalist id="lista_seccion">
+                                    {/* CREO, CREO QUE HAY QUE TRAER LA LISTA DE SECCION PARA QUE LAS OPCIONES SEAN LAS DE LA API PRODUCTO */}
+                                    <option value="Verduras"></option>
+                                    <option value="Hogar"></option>
                                 </datalist>
                             </div>
 
