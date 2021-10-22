@@ -9,7 +9,8 @@ const Login = () => {
     //Chequea respuestas de OAuth
     const responseGoogle = (response) => {
         console.log(response)
-        console.log(response.profileObj)
+        //Muestra información de usuario logueado
+        // console.log(response.profileObj)
     };
 
     return (
@@ -69,7 +70,7 @@ const Login = () => {
                         <br /><br />
                         
                         <GoogleLogin
-                            clientId="905627960838-oumcr1eecgnta22frcifb841fpam6mlc.apps.googleusercontent.com"
+                            clientId="552650659454-q8rmn4k2p0l2386ulv336mdo0spjvtf9.apps.googleusercontent.com"
                             buttonText="Inicia sesión con cuenta de Google"
                             // render={renderProps => (
                             //   <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Login</button>
