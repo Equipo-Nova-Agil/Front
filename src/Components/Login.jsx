@@ -3,6 +3,7 @@ import "./Login.css"
 import GoogleLogin from 'react-google-login';
 
 
+
 const Login = () => {
 
     //Chequea respuestas de OAuth
@@ -55,14 +56,14 @@ const Login = () => {
                                     <span className="fab fa-twitter" aria-hidden="true"></span>
                                 </div>
                             </a> */}
-                            <a href="#google">
+                            {/* <a href="#google">
                                 <button className="login-google"> 
                                     <span>Continúa con</span> 
                                     <span><img className="img-google" src="https://img.pngio.com/google-logo-2015-png-image-purepng-free-transparent-cc0-png-google-logo-transparent-10000_3382.png" alt="" /></span>
-                                    {/* <span className="fab fa-google google" aria-hidden="true"></span> */}
+                                    <span className="fab fa-google google" aria-hidden="true"></span>
                                 
                                 </button>
-                            </a>
+                            </a> */}
                         </div>
                         <p className="account">¿No tienes cuenta? <a href="#signup">Regístrate</a></p>
                         <br /><br />
