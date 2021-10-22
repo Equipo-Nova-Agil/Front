@@ -81,7 +81,7 @@ function App() {
   const enviarDatosUsuarios = async(e) => {
     e.preventDefault()
     const formData = {
-      id_usuarios: parseInt(uuidv4(), 16),
+      id_usuarios: parseInt(uuidv4(), 16).toString().slice(2),
       nombre: e.target.nombre.value,
       apellido: e.target.apellido.value,
       edad: e.target.edad.value,
@@ -105,11 +105,7 @@ function App() {
       .catch(error => {
           console.log(error)
       })
-      // console.log(parseInt(uuidv4(), 16))
-      // console.log(typeof(parseInt(uuidv4(), 16)))
 
-    //e.target.reset()
-    //console.log("ID real",formData.id_usuarios)
   }
   // ---------------------------------------------------
 
@@ -124,9 +120,6 @@ function App() {
       })
   }
 
-  //console.log(`${baseUrl}${parseInt(uuidv4(), 16)}`)
-  // let idDefinitivo = enviarDatosUsuarios()
-  // console.log(idDefinitivo)
 
   // FINAL CODIGO DE USUARIOS*********************************************************************************************************
   // FINAL CODIGO DE USUARIOS*********************************************************************************************************
@@ -186,7 +179,7 @@ function App() {
   const enviarDatosVentas = async(e) => {
     e.preventDefault()
     const formDataVentas = {
-      id_venta: parseInt(uuidv4(), 16),
+      id_venta: parseInt(uuidv4(), 16).toString().slice(2),
       id_usuario: e.target.id_usuario.value,
       id_producto: e.target.id_producto.value,
       cantidad: e.target.cantidad.value,
@@ -273,13 +266,15 @@ function App() {
 
   // METODO POST PRODUCTOS
   const enviarDatosProductos = async(e) => {
+
+    
     e.preventDefault()
     const formDataProductos = {
-      id_producto: parseInt(uuidv4(), 16),
-      id_usuario: e.target.id_usuario.value,
-      id_producto: e.target.id_producto.value,
-      cantidad: e.target.cantidad.value,
+      id_producto: parseInt(uuidv4(), 16).toString().slice(2),
+      id_tienda: e.target.id_tienda.value,
+      nombre: e.target.nombre.value,
       precio: e.target.precio.value,
+      seccion: e.target.seccion.value,
     }
   
     await axios.post(baseUrlProductos, formDataProductos)
@@ -291,7 +286,9 @@ function App() {
       .catch(error => {
           console.log(error)
       })
-
+      console.log("Id generado", typeof(formDataProductos.id_producto))
+      console.log("Id generado", formDataProductos.id_producto)
+ 
   }
   // ---------------------------------------------------
 
@@ -342,13 +339,13 @@ function App() {
 
 
           <Route path={rutas.productos} exact>
-          <Productos/>
+          <Productos deleteProducto={deleteProducto} datosProductos={datosProductos} filtroBusquedaProductos={filtroBusquedaProductos}/>
           </Route>
           <Route path={rutas.editarProducto} exact>
             <EditarProducto/>
           </Route>
           <Route path={rutas.nuevoProducto} exact>
-            <NuevoProducto/>
+            <NuevoProducto enviarDatosProductos={enviarDatosProductos}/>
           </Route>
 
         </Switch>

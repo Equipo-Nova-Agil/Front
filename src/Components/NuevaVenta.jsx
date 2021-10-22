@@ -13,7 +13,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
                         <form id="formulario" className="bg-white p-3" onSubmit={enviarDatosVentas}>
-                            <div className="mb-4">
+                            {/* <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_venta">Identificador de la venta</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -22,7 +22,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
                                     type="text"
                                     placeholder="Id. Venta"
                                 />
-                            </div>
+                            </div> */}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_usuario">Id del Usuario</label>
                                 <input 
@@ -40,6 +40,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
                                 </datalist>
                             </div>
                             <div className="mb-4">
+                                {/* colocar selector de id producto */}
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_producto">Identificador del Producto</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

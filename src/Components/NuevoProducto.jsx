@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const NuevoProducto = () => {
+const NuevoProducto = ({enviarDatosProductos}) => {
     return (
         <>
         {/* <LayoutProductos> */}
@@ -11,8 +11,8 @@ const NuevoProducto = () => {
             <div className="flex flex-col mt-10 items-center">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
-                        <form id="formulario" className="bg-white p-3">
-                            <div className="mb-4">
+                        <form id="formulario" onSubmit={enviarDatosProductos} className="bg-white p-3">
+                            {/* <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_producto">Identificador del Producto</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -21,18 +21,27 @@ const NuevoProducto = () => {
                                     type="text"
                                     placeholder="Id. Producto"
                                 />
-                            </div>
+                            </div> */}
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id.tienda">ID. Tienda</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_tienda">ID. Tienda</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="id.tienda"
-                                    name="id.tienda"
+                                    id="id_tienda"
+                                    name="id_tienda"
                                     type="text"
                                     placeholder="ID. Tienda"
                                 />
                             </div>
-
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">Nombre</label>
+                                <input 
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="nombre"
+                                    name="nombre"
+                                    type="text"
+                                    placeholder="Nombre"
+                                />
+                            </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="precio">Precio</label>
                                 <input 
@@ -59,11 +68,11 @@ const NuevoProducto = () => {
                                 </datalist>
                             </div>
 
-                            <input
+                            <button
                                 type="submit"
                                 className="bg-teal-600 hover:bg-teal-900 w-full mt-5 p-2 text-white uppercase font-bold"
                                 value="Agregar Producto"
-                            />
+                            >Agregar Producto</button>
                         </form>
                     </div>
                 </div>
