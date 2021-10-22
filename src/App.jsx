@@ -27,6 +27,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 function App() {
 
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
+  // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
   const [datosUsuarios, setDatosUsuarios] = useState([])
   //const baseUrl = "http://localhost:3000/posts"
   const baseUrl = "https://sleepy-forest-23219.herokuapp.com/api/usuario/"
@@ -128,10 +129,11 @@ function App() {
   // console.log(idDefinitivo)
 
   // FINAL CODIGO DE USUARIOS*********************************************************************************************************
+  // FINAL CODIGO DE USUARIOS*********************************************************************************************************
 
 
 
-
+  // COMIENZO CODIGO DE VENTAS*********************************************************************************************
   // COMIENZO CODIGO DE VENTAS*********************************************************************************************
   const [datosVentas, setDatosVentas] = useState([])
   //const baseUrl = "http://localhost:3000/posts"
@@ -183,10 +185,10 @@ function App() {
     e.preventDefault()
     const formDataVentas = {
       id_venta: parseInt(uuidv4(), 16),
-      id_cliente: e.target.id_cliente.value,
+      id_usuario: e.target.id_usuario.value,
       id_producto: e.target.id_producto.value,
       cantidad: e.target.cantidad.value,
-      valor: e.target.genero.value,
+      precio: e.target.precio.value,
     }
   
     await axios.post(baseUrlVentas, formDataVentas)
@@ -217,8 +219,7 @@ function App() {
       })
   }
 
-  
-
+  // FINAL CODIGO DE VENTAS*********************************************************************************************************
   // FINAL CODIGO DE VENTAS*********************************************************************************************************
 
 

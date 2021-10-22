@@ -24,11 +24,11 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_cliente">Id del Usuario</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_usuario">Id del Usuario</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     list="cliente_id"
-                                    name="id_cliente"
+                                    name="id_usuario"
                                     type="text"
                                     placeholder="Id. Usuario"
                                 />
@@ -60,13 +60,13 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="valor">Valor total de la venta</label>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="precio">precio total de la venta</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="valor"
-                                    name="valor"
+                                    id="precio"
+                                    name="precio"
                                     type="number" min="0" step="1"
-                                    placeholder="Valor total"
+                                    placeholder="precio total"
                                 />
                             </div>
                             {/* <div className="mb-4">
