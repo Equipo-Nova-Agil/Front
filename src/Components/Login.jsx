@@ -1,8 +1,16 @@
 import React from 'react';
 import "./Login.css" 
+import GoogleLogin from 'react-google-login';
 
 
 const Login = () => {
+
+    //Chequea respuestas de OAuth
+    const responseGoogle = (response) => {
+        console.log(response)
+        console.log(response.profileObj)
+    };
+
     return (
         <>
         <div className="signinform">
@@ -57,7 +65,18 @@ const Login = () => {
                             </a>
                         </div>
                         <p className="account">¿No tienes cuenta? <a href="#signup">Regístrate</a></p>
-                    
+                        <br /><br />
+                        
+                        <GoogleLogin
+                            clientId="905627960838-oumcr1eecgnta22frcifb841fpam6mlc.apps.googleusercontent.com"
+                            buttonText="Inicia sesión con cuenta de Google"
+                            // render={renderProps => (
+                            //   <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Login</button>
+                            // )}
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />,
                 </div>
             </div>
             {/* <!-- //main content --> */}
