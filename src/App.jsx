@@ -186,7 +186,7 @@ function App() {
       id_cliente: e.target.id_cliente.value,
       id_producto: e.target.id_producto.value,
       cantidad: e.target.cantidad.value,
-      valor: e.target.genero.value,
+      valor: e.target.valor.value,
     }
   
     await axios.post(baseUrlVentas, formDataVentas)
