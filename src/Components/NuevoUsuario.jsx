@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const NuevoUsuario = ({enviarDatosUsuarios}) => {
+const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
     return (
         <>
              {/* <Layout> */}
@@ -50,9 +50,9 @@ const NuevoUsuario = ({enviarDatosUsuarios}) => {
                                         placeholder="Seleccionar genero"
                                     />
                                     <datalist id="lista_genero">
-                                        <option value="Femenino"></option>
-                                        <option value="Masculino"></option>
-                                        <option value="Sin especificar"></option>
+                                        <option value="f"></option>
+                                        <option value="m"></option>
+                                        {/* <option value="Sin especificar"></option> */}
                                     </datalist>
                                 </div>
                                 <div className="mb-4">
@@ -124,9 +124,9 @@ const NuevoUsuario = ({enviarDatosUsuarios}) => {
                                         placeholder="Seleccionar rol"
                                     />
                                     <datalist id="lista_roles">
-                                        <option value="Administrador"></option>
-                                        <option value="Vendedor"></option>
-                                        <option value="Gerente de ventas"></option>
+                                        {datosUsuarios.map(idu => (
+                                            <option key={idu.id_rol_id} value={idu.id_rol_id}></option>       
+                                        ))}
                                     </datalist>
                                 </div>
                                 <div className="mb-4">
@@ -138,9 +138,9 @@ const NuevoUsuario = ({enviarDatosUsuarios}) => {
                                         placeholder="Seleccionar estado"
                                     />
                                     <datalist id="lista_estado">
-                                        <option value="Pendiente"></option>
-                                        <option value="Autorizado"></option>
-                                        <option value="No autorizado"></option>
+                                        {datosUsuarios.map(idu => (
+                                            <option key={idu.id_estado_id} value={idu.id_estado_id}></option>       
+                                        ))}
                                     </datalist>
                                 </div>
 

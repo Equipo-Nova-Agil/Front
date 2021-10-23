@@ -1,7 +1,10 @@
 import React from 'react'
 
 
-const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
+const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
+
+    console.log(datosProductos.id_producto)
+    console.log(datosUsuarios.id_usuarios)
     
     return (
         <>
@@ -44,11 +47,19 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios}) => {
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_producto">Identificador del Producto</label>
                                 <input 
                                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="id_producto"
+                                    list="id_producto"
                                     name="id_producto"
                                     type="text"
                                     placeholder="Id. Producto"
                                 />
+                                <datalist id="id_producto">
+                                    {datosProductos.map(idp => (
+                                                                              
+                                        <option key={idp.id_producto} value={idp.id_producto}></option>       
+                                        
+                                    ))}
+   
+                                </datalist>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cantidad">Cantidad de producto</label>

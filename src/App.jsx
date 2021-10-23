@@ -146,7 +146,7 @@ function App() {
 
   const filtrarVentas = (terminoBusqueda) => {
     let resultadosBusqueda = tablaVentas.filter(elemento => {
-      if (elemento.id_venta.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if (elemento.id_venta.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) || elemento.id_usuario_id.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento
       }
     })
@@ -235,7 +235,7 @@ function App() {
 
   const filtrarProductos = (terminoBusqueda) => {
     let resultadosBusquedaProductos = tablaProductos.filter(elemento => {
-      if (elemento.id_producto.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if (elemento.id_producto.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) || elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento
       }
     })
@@ -320,7 +320,7 @@ function App() {
             <EditarUsuario datosUsuarios={datosUsuarios}/>
           </Route>
           <Route path={rutas.nuevoUsuario} exact>
-            <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios}/>
+            <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios} datosUsuarios={datosUsuarios}/>
           </Route>
 
 
@@ -332,7 +332,7 @@ function App() {
             <EditarVenta datosVentas={datosVentas}/>
           </Route>
           <Route path={rutas.nuevaVenta} exact>
-            <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} />
+            <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} datosProductos={datosProductos} />
           </Route>
 
 
@@ -353,6 +353,7 @@ function App() {
 
       </LayoutUniversal>
     </ Router>
+    
   );
 }
 

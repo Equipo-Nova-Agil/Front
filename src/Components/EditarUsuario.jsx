@@ -30,6 +30,32 @@ const EditarUsuario = ({datosUsuarios}) => {
    
                                 </datalist>
                             </div>
+
+                            {/* OPCIONAL CON SELECT */}
+                            {/* <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id">ID</label>
+                                <input 
+                                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    list="lista_id"
+                                    name="id"
+                                    type="text"
+                                    placeholder="Id usuario"
+                                    /> 
+                                <select id="lista_id">
+                                    {datosUsuarios.map(id => (
+                                        <>
+                                        <option selected="true" disabled>Seleccionar Id</option>  
+                                        <option key={id.id_usuarios} value={id.id_usuarios}>{id.id_usuarios}</option>       
+                                        </>
+                                    ))}
+   
+                                </select>
+                            </div> */}
+
+
+
+
+
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">Nombre</label>
                                 <input 
