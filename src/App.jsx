@@ -224,6 +224,19 @@ function App() {
       })
   }
 
+  // METODO PUT VENTAS
+
+  const putVenta = (id, infoVenta, successCallback) => {
+    axios.put(`${baseUrlVentas}${id}`, infoVenta)
+      .then(() => {
+        getVentas()
+        successCallback()
+      })
+      .catch(error=> {
+        console.log(error)
+      })
+  }
+
   // FINAL CODIGO DE VENTAS*************************************
   // FINAL CODIGO DE VENTAS*************************************
 
@@ -343,7 +356,7 @@ function App() {
             <Ventas deleteVenta={deleteVenta} datosVentas={datosVentas} filtroBusquedaVentas={filtroBusquedaVentas} getVentas={getVentas}/>
           </Route>
           <Route path={rutas.editarVenta} exact>
-            <EditarVenta datosVentas={datosVentas}/>
+            <EditarVenta putVenta={putVenta}/>
           </Route>
           <Route path={rutas.nuevaVenta} exact>
             <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} datosProductos={datosProductos} />

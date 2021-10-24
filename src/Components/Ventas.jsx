@@ -1,14 +1,17 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import Rutas from '../constantes/Rutas'
 
 
 
 const Ventas = ({datosVentas, deleteVenta, filtroBusquedaVentas}) => {
 
-    const recargar = () => {
-        setTimeout(() => {
-            window.location.reload(false);
-        },100)
-    }
+    const history = useHistory()
+    // const recargar = () => {
+    //     setTimeout(() => {
+    //         window.location.reload(false);
+    //     },100)
+    // }
 
 
     return (
@@ -47,7 +50,7 @@ const Ventas = ({datosVentas, deleteVenta, filtroBusquedaVentas}) => {
                                     Valor total de la venta
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                    Eliminar
+                                    Acciones
                                 </th>
                                 {/* <th className="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
                                     Precio unitario de producto
@@ -82,7 +85,16 @@ const Ventas = ({datosVentas, deleteVenta, filtroBusquedaVentas}) => {
                                     <td className="text-center">{v.direccion}</td> 
                                     <td className="text-center">{v.id_rol_id}</td> 
                                     <td className="text-center">{v.id_estado_id}</td> */}
-                                    <td className="text-center"><button onClick={() => {deleteVenta(v.id_venta); recargar()}}><i className="fas fa-trash"></i></button></td>                                      
+                                    <td className="text-center display flex flex-row justify-evenly">
+
+                                        <button onClick={() => {
+                                            history.push(Rutas.editarVenta.replace(":ventId", v.id_venta))
+                                        }}>
+                                            <i className="fas fa-pencil-alt"/>
+                                        </button>
+                                        <button onClick={() => deleteVenta(v.id_venta)}><i className="fas fa-trash"></i>
+                                        </button>
+                                    </td>                                      
                                 </tr>
                             ))}   
                         </tbody>

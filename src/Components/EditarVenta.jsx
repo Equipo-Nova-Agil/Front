@@ -1,7 +1,73 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import Rutas from '../constantes/Rutas'
+import axios from 'axios'
+import { useParams,useHistory } from 'react-router-dom'
+
+const mapearVenta = (detalleVenta) => ({
+    "id_venta": detalleVenta.id_venta,
+    "id_usuario": detalleVenta.id_usuario_id,
+    "id_producto": detalleVenta.id_producto_id,
+    "cantidad": detalleVenta.cantidad,
+    "precio": detalleVenta.precio,
+})
+
+const EditarVenta = ({putVenta}) => {
+
+    const {ventId} = useParams()
+    const history = useHistory()
+
+    const [detallesVenta, setDetallesVenta] = useState(null)
+    const [cargando, setCargando] = useState(true)
+    const [error, setError] = useState(null)
+
+    const pedirDetallesVenta = async() => {
+        try {
+            const {data} = await axios.get(`https://sleepy-forest-23219.herokuapp.com/api/venta/${ventId}`)
+            setDetallesVenta(mapearVenta(data.Ventas))
+            console.log(detallesVenta)
+            setCargando(false)
+        }catch(nuevoError){
+            setCargando(false)
+            setError(nuevoError)
+        }
+    }
+
+    const modificarCampo = (campo) => (event) => {
+        const nuevoValor  = event.target.value
+        setDetallesVenta((infoActual) => ({
+            ...infoActual,
+            [campo]: nuevoValor
+        })) 
+    }
+
+    const onSubmitVenta = (e) => {
+        e.preventDefault()
+        putVenta(
+            ventId,
+            detallesVenta,
+            () => {
+                history.push(Rutas.ventas)
+            }
+        )
+    }
+
+    useEffect(() => {
+        pedirDetallesVenta()
+    }, [])
+
+    if (cargando){
+        return (
+            <h1>Cargando info</h1>
+        )
+    }
+
+    if (error){
+        return (
+            <h1>Error cargando info</h1>
+        )
+    }
 
 
-const EditarVenta = () => {
     return (
         <>
           {/* <LayoutVentas> */}
@@ -11,7 +77,7 @@ const EditarVenta = () => {
             <div className="flex flex-col mt-10 items-center">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
-                        <form id="formulario" className="bg-white p-3">
+                        <form id="formulario" onSubmit={onSubmitVenta} className="bg-white p-3">
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_venta">Identificador de la venta</label>
                                 <input 
@@ -20,6 +86,8 @@ const EditarVenta = () => {
                                     name="id_venta"
                                     type="text"
                                     placeholder="Id. Venta"
+                                    disabled                         
+                                    defaultValue={ventId}
                                 />
                             </div>
                             <div className="mb-4">
@@ -30,6 +98,8 @@ const EditarVenta = () => {
                                     name="id_cliente"
                                     type="text"
                                     placeholder="Id. Cliente"
+                                    value={detallesVenta.id_usuario}
+                                    onChange={modificarCampo("id_usuario")}
                                 />
                             </div>
                             <div className="mb-4">
@@ -40,6 +110,8 @@ const EditarVenta = () => {
                                     name="id_producto"
                                     type="text"
                                     placeholder="Id. Producto"
+                                    value={detallesVenta.id_producto}
+                                    onChange={modificarCampo("id_producto")}
                                 />
                             </div>
                             <div className="mb-4">
@@ -50,6 +122,8 @@ const EditarVenta = () => {
                                     name="cantidad"
                                     type="number" min="0" step="1"
                                     placeholder="Cantidad total"
+                                    value={detallesVenta.cantidad}
+                                    onChange={modificarCampo("cantidad")}
                                 />
                             </div>
                             <div className="mb-4">
@@ -60,6 +134,8 @@ const EditarVenta = () => {
                                     name="valor"
                                     type="number" min="0" step="1"
                                     placeholder="Valor total"
+                                    value={detallesVenta.precio}
+                                    onChange={modificarCampo("precio")}
                                 />
                             </div>
                             {/* <div className="mb-4">

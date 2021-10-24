@@ -101,8 +101,6 @@ const Usuarios = ({datosUsuarios, filtroBusqueda, deleteUsuario}) => {
                                         </button>
                                         
                                     </td> 
-
-
                                 </tr>
                             ))}  
                         </tbody>

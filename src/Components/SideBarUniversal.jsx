@@ -43,9 +43,9 @@ const SideBarUniversal = () => {
                         <Link to={rutas.ventas}>                           
                             <li>Ventas</li>
                         </ Link>
-                        <Link to={rutas.editarVenta.replace(":ventId", 1)}>                           
+                        {/* <Link to={rutas.editarVenta.replace(":ventId", 1)}>                           
                             <li>Editar Venta</li>
-                        </ Link>
+                        </ Link> */}
                         <Link to={rutas.nuevaVenta}>                           
                             <li>Nueva Venta</li>
                         </ Link>
