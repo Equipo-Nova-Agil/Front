@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
-//import Login from "./Components/Login"
+import Login from "./Components/Login"
 import LayoutUniversal from './Components/LayoutUniversal';
 
 import Usuarios from "./Components/Usuarios"
@@ -224,50 +224,52 @@ function App() {
 
   
   return (
-    <Router>
+    // <Router>
     
-      <LayoutUniversal>
-        <Switch>
-          <Route path={rutas.usuarios} exact>
-            <Usuarios deleteUsuario={deleteUsuario} datosUsuarios={datosUsuarios} filtroBusqueda={filtroBusqueda} getUsuarios={getUsuarios}/>
-          </Route>
-          <Route path={rutas.editarUsuario} exact>
-            <EditarUsuario datosUsuarios={datosUsuarios}/>
-          </Route>
-          <Route path={rutas.nuevoUsuario} exact>
-            <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios}/>
-          </Route>
+    //   <LayoutUniversal>
+    //     <Switch>
+    //       <Route path={rutas.usuarios} exact>
+    //         <Usuarios deleteUsuario={deleteUsuario} datosUsuarios={datosUsuarios} filtroBusqueda={filtroBusqueda} getUsuarios={getUsuarios}/>
+    //       </Route>
+    //       <Route path={rutas.editarUsuario} exact>
+    //         <EditarUsuario datosUsuarios={datosUsuarios}/>
+    //       </Route>
+    //       <Route path={rutas.nuevoUsuario} exact>
+    //         <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios}/>
+    //       </Route>
 
 
 
-          <Route path={rutas.ventas} exact>
-            <Ventas deleteVenta={deleteVenta} datosVentas={datosVentas} filtroBusquedaVentas={filtroBusquedaVentas} getVentas={getVentas}/>
-          </Route>
-          <Route path={rutas.editarVenta} exact>
-            <EditarVenta datosVentas={datosVentas}/>
-          </Route>
-          <Route path={rutas.nuevaVenta} exact>
-            <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} />
-          </Route>
+    //       <Route path={rutas.ventas} exact>
+    //         <Ventas deleteVenta={deleteVenta} datosVentas={datosVentas} filtroBusquedaVentas={filtroBusquedaVentas} getVentas={getVentas}/>
+    //       </Route>
+    //       <Route path={rutas.editarVenta} exact>
+    //         <EditarVenta datosVentas={datosVentas}/>
+    //       </Route>
+    //       <Route path={rutas.nuevaVenta} exact>
+    //         <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} />
+    //       </Route>
 
 
 
 
-          <Route path={rutas.productos} exact>
-          <Productos/>
-          </Route>
-          <Route path={rutas.editarProducto} exact>
-            <EditarProducto/>
-          </Route>
-          <Route path={rutas.nuevoProducto} exact>
-            <NuevoProducto/>
-          </Route>
+    //       <Route path={rutas.productos} exact>
+    //       <Productos/>
+    //       </Route>
+    //       <Route path={rutas.editarProducto} exact>
+    //         <EditarProducto/>
+    //       </Route>
+    //       <Route path={rutas.nuevoProducto} exact>
+    //         <NuevoProducto/>
+    //       </Route>
 
-        </Switch>
+    //     </Switch>
         
 
-      </LayoutUniversal>
-    </ Router>
+    //   </LayoutUniversal>
+    // </ Router>
+
+    <Login></Login>
   );
 }
 
