@@ -113,12 +113,26 @@ function App() {
   const deleteUsuario = async(id) => {
     await axios.delete(`${baseUrl}${id}`)
       .then(res => {
-        setDatosUsuarios(datosUsuarios.filter(user => user.id !== id))
+        setDatosUsuarios(datosUsuarios.filter(user => user.id_usuarios !== id))
       })
       .catch(error => {
         console.log(error)
       })
   }
+
+  // METODO PUT USUARIOS
+
+  const putUsuario = (id, infoUsuario, successCallback) => {
+    axios.put(`${baseUrl}${id}`, infoUsuario)
+      .then(() => {
+        getUsuarios()
+        successCallback()
+      })
+      .catch(error=> {
+          console.log(error)
+      })
+  }
+
 
 
   // FINAL CODIGO DE USUARIOS*********************************************************************************************************
@@ -317,7 +331,7 @@ function App() {
             <Usuarios deleteUsuario={deleteUsuario} datosUsuarios={datosUsuarios} filtroBusqueda={filtroBusqueda} getUsuarios={getUsuarios}/>
           </Route>
           <Route path={rutas.editarUsuario} exact>
-            <EditarUsuario datosUsuarios={datosUsuarios}/>
+            <EditarUsuario putUsuario={putUsuario}/>
           </Route>
           <Route path={rutas.nuevoUsuario} exact>
             <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios} datosUsuarios={datosUsuarios}/>

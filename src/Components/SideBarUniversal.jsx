@@ -23,9 +23,9 @@ const SideBarUniversal = () => {
                         <Link to={rutas.usuarios}>
                             <li>Usuarios</li>
                         </ Link>
-                        <Link to={rutas.editarUsuario.replace(":userId", 2)}>
+                        {/* <Link to={rutas.editarUsuario.replace(":userId", 2)}>
                             <li>Editar Usuario</li>                            
-                        </ Link>
+                        </ Link> */}
                         <Link to={rutas.nuevoUsuario}>
                             <li>Nuevo Usuario</li>
                         </ Link>

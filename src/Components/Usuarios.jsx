@@ -1,16 +1,19 @@
 import React from 'react'
 import "./tailwind.min.css" 
-
+import { useHistory } from 'react-router-dom'
+import Rutas from '../constantes/Rutas'
 
 
 const Usuarios = ({datosUsuarios, filtroBusqueda, deleteUsuario}) => {
 
+    const history = useHistory()
+
     //console.log("Desde usuarios:",datosUsuarioss)
-    const recargar = () => {
-        setTimeout(() => {
-            window.location.reload(false);
-        },100)
-    }
+    // const recargar = () => {
+    //     setTimeout(() => {
+    //         window.location.reload(false);
+    //     },100)
+    // }
 
 
     return (
@@ -69,7 +72,7 @@ const Usuarios = ({datosUsuarios, filtroBusqueda, deleteUsuario}) => {
                                     Estado
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                    Eliminar
+                                    Acciones
                                 </th>
                             </tr>
                         </thead>
@@ -88,7 +91,18 @@ const Usuarios = ({datosUsuarios, filtroBusqueda, deleteUsuario}) => {
                                     <td className="text-center">{u.direccion}</td> 
                                     <td className="text-center">{u.id_rol_id}</td> 
                                     <td className="text-center">{u.id_estado_id}</td>
-                                    <td className="text-center"><button onClick={() => {deleteUsuario(u.id_usuarios); recargar()}}><i className="fas fa-trash"></i></button></td>                                      
+                                    <td className="text-center display flex flex-row justify-evenly">
+                                        <button onClick={() => {
+                                            history.push(Rutas.editarUsuario.replace(":userId", u.id_usuarios))
+                                        }}>
+                                            <i className="fas fa-pencil-alt"/>
+                                        </button>
+                                        <button onClick={() => deleteUsuario(u.id_usuarios)}><i className="fas fa-trash" />
+                                        </button>
+                                        
+                                    </td> 
+
+
                                 </tr>
                             ))}  
                         </tbody>
