@@ -1,5 +1,6 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
+
 import axios from "axios"
 //import Login from "./Components/Login"
 import LayoutUniversal from './Components/LayoutUniversal';
@@ -25,6 +26,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
 function App() {
+
 
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
@@ -217,7 +219,7 @@ function App() {
   const deleteVenta = async(id) => {
     await axios.delete(`${baseUrlVentas}${id}`)
       .then(res => {
-        setDatosVentas(datosVentas.filter(v => v.id !== id))
+        setDatosVentas(datosVentas.filter(v => v.id_venta !== id))
       })
       .catch(error => {
         console.log(error)
@@ -303,19 +305,20 @@ function App() {
       precio: e.target.precio.value,
       seccion: e.target.seccion.value,
     }
-  
+    
+    
     await axios.post(baseUrlProductos, formDataProductos)
-      .then(res => {
-          setDatosProductos((currentData) => [
-              ...currentData, formDataProductos
-          ])
-      })
-      .catch(error => {
-          console.log(error)
-      })
-      console.log("Id generado", typeof(formDataProductos.id_producto))
-      console.log("Id generado", formDataProductos.id_producto)
- 
+    .then(res => {
+      setDatosProductos((currentData) => [
+        ...currentData, formDataProductos
+      ])
+    })
+    .catch(error => {
+      console.log(error)
+    })
+    console.log("Id generado", typeof(formDataProductos.id_producto))
+    console.log("Id generado", formDataProductos.id_producto)
+
   }
   // ---------------------------------------------------
 
@@ -323,9 +326,22 @@ function App() {
   const deleteProducto = async(id) => {
     await axios.delete(`${baseUrlProductos}${id}`)
       .then(res => {
-        setDatosProductos(datosProductos.filter(p => p.id !== id))
+        setDatosProductos(datosProductos.filter(p => p.id_producto !== id))
       })
       .catch(error => {
+        console.log(error)
+      })
+  }
+
+  // METODO PUT PRODUCTO
+
+  const putProducto = (id, infoProducto, successCallback) => {
+    axios.put(`${baseUrlProductos}${id}`, infoProducto)
+      .then(() => {
+        getProductos()
+        successCallback()
+      })
+      .catch(error=> {
         console.log(error)
       })
   }
@@ -369,7 +385,7 @@ function App() {
           <Productos deleteProducto={deleteProducto} datosProductos={datosProductos} filtroBusquedaProductos={filtroBusquedaProductos}/>
           </Route>
           <Route path={rutas.editarProducto} exact>
-            <EditarProducto/>
+            <EditarProducto putProducto={putProducto}/> 
           </Route>
           <Route path={rutas.nuevoProducto} exact>
             <NuevoProducto enviarDatosProductos={enviarDatosProductos}/>

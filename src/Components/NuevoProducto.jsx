@@ -2,6 +2,7 @@ import React from 'react'
 
 
 const NuevoProducto = ({enviarDatosProductos}) => {
+
     return (
         <>
         {/* <LayoutProductos> */}
@@ -29,6 +30,8 @@ const NuevoProducto = ({enviarDatosProductos}) => {
                                     id="id_tienda"
                                     name="id_tienda"
                                     type="text"
+                                    defaultValue={2}
+                                    disabled
                                     placeholder="ID. Tienda"
                                 />
                             </div>

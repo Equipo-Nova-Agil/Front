@@ -1,14 +1,17 @@
 import React from 'react'
 import "./tailwind.min.css" 
+import { useHistory } from 'react-router-dom'
+import Rutas from '../constantes/Rutas'
 
 
 const Productos = ({datosProductos, filtroBusquedaProductos, deleteProducto}) => {
     
-    const recargar = () => {
-        setTimeout(() => {
-            window.location.reload(false);
-        },100)
-    }
+    const history = useHistory()
+    // const recargar = () => {
+    //     setTimeout(() => {
+    //         window.location.reload(false);
+    //     },100)
+    // }
 
 
     return (
@@ -34,22 +37,22 @@ const Productos = ({datosProductos, filtroBusquedaProductos, deleteProducto}) =>
                         <thead className="bg-gray-100 ">
                             <tr>
                                 <th className="px-6 py-3 border-b border-gray-200  text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                        Id. Producto
+                                    Id. Producto
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                        Id. Tienda
+                                    Id. Tienda
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                        Nombre
+                                    Nombre
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                        Precio
+                                    Precio
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                        Seccion
+                                    Seccion
                                 </th>
                                 <th className="px-6 py-3 border-b border-gray-200  text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                    Eliminar
+                                    Acciones
                                 </th>
                             </tr>
                         </thead>
@@ -60,8 +63,17 @@ const Productos = ({datosProductos, filtroBusquedaProductos, deleteProducto}) =>
                                     <td className="text-center">{p.id_tienda_id}</td>
                                     <td className="text-center">{p.nombre}</td>
                                     <td className="text-center">{p.precio}</td> 
-                                    <td className="text-center">{p.seccion}</td> 
-                                    <td className="text-center"><button onClick={() => {deleteProducto(p.id_producto); recargar()}}><i className="fas fa-trash"></i></button></td>                                      
+                                    <td className="text-center">{p.seccion}</td>                                     
+                                    <td className="text-center display flex flex-row justify-evenly">
+                                        <button onClick={() => {
+                                                history.push(Rutas.editarProducto.replace(":prodId", p.id_producto))
+                                            }}>
+                                                <i className="fas fa-pencil-alt"/>
+                                        </button>
+                                        <button onClick={() => deleteProducto(p.id_producto)}>
+                                            <i className="fas fa-trash"></i>
+                                        </button>
+                                    </td>                                      
                                 </tr>
                             ))}    
                         </tbody>

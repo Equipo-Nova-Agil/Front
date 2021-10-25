@@ -6,6 +6,6 @@ export default {
     editarVenta: "/editar-venta/:ventId",
     nuevaVenta: "/nueva-venta",
     productos: "/productos",
-    editarProducto: "/editar-producto/:editProd",
+    editarProducto: "/editar-producto/:prodId",
     nuevoProducto: "/nuevo-producto",
 }
