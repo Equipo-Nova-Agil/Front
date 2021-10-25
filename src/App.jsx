@@ -26,8 +26,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
 function App() {
-
-
+  
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
   const [datosUsuarios, setDatosUsuarios] = useState([])

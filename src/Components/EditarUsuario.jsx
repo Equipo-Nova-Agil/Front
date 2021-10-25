@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import Rutas from '../constantes/Rutas'
 import axios from 'axios'
+import "./tailwind.min.css" 
 
 
 const mapearUsuario = (detalleUsuario) => ({
@@ -69,7 +70,9 @@ const EditarUsuario = ({putUsuario}) => {
 
     if (cargando){
         return (
-            <h1>Cargando info</h1>
+            <h1>
+                <i className="fa-10x fas fa-spinner fa-spin"></i>
+            </h1>
         )
     }
 

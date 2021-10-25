@@ -58,7 +58,9 @@ const EditarProducto = ({putProducto}) => {
 
     if (cargando){
         return (
-            <h1>Cargando info</h1>
+            <h1>
+                <i className="fa-10x fas fa-spinner fa-spin"></i>
+            </h1>
         )
     }
 
