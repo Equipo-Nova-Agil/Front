@@ -3,8 +3,6 @@ import { useParams, useHistory } from 'react-router-dom'
 import Rutas from '../constantes/Rutas'
 import axios from 'axios'
 import "./tailwind.min.css" 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 const mapearUsuario = (detalleUsuario) => ({

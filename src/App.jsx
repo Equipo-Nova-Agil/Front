@@ -271,7 +271,7 @@ function App() {
               ...currentData, formDataVentas
           ])
           if (res.status === 200 || res.status === 201){
-            toast.success('Venta Creada', {
+            toast.success('Venta creada', {
               position: "bottom-center",
               autoClose: 5000,
               hideProgressBar: false,
@@ -304,7 +304,7 @@ function App() {
       .then(res => {
         setDatosVentas(datosVentas.filter(v => v.id_venta !== id))
         if (res.status === 200 || res.status === 201){
-          toast.success('Venta Eliminada', {
+          toast.success('Venta eliminada', {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -435,9 +435,29 @@ function App() {
       setDatosProductos((currentData) => [
         ...currentData, formDataProductos
       ])
+      if (res.status === 200 || res.status === 201){
+        toast.success('Producto creado', {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
     })
     .catch(error => {
       console.log(error)
+      toast.error("No se pudo crear producto, intente más tarde", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        }); 
     })
     console.log("Id generado", typeof(formDataProductos.id_producto))
     console.log("Id generado", formDataProductos.id_producto)
@@ -450,9 +470,29 @@ function App() {
     await axios.delete(`${baseUrlProductos}${id}`)
       .then(res => {
         setDatosProductos(datosProductos.filter(p => p.id_producto !== id))
+        if (res.status === 200 || res.status === 201){
+          toast.success('Producto eliminado', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
       })
       .catch(error => {
         console.log(error)
+        toast.error("No se pudo eliminar venta, intente más tarde", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       })
   }
 
@@ -460,9 +500,20 @@ function App() {
 
   const putProducto = (id, infoProducto, successCallback) => {
     axios.put(`${baseUrlProductos}${id}`, infoProducto)
-      .then(() => {
+      .then((res) => {
         getProductos()
         successCallback()
+        if (res.status === 200){
+          toast.success("Producto editado", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       })
       .catch(error=> {
         console.log(error)
@@ -512,12 +563,15 @@ function App() {
 
           <Route path={rutas.productos} exact>
           <Productos deleteProducto={deleteProducto} datosProductos={datosProductos} filtroBusquedaProductos={filtroBusquedaProductos}/>
+          <ToastContainer />
           </Route>
           <Route path={rutas.editarProducto} exact>
             <EditarProducto putProducto={putProducto}/> 
+            <ToastContainer />
           </Route>
           <Route path={rutas.nuevoProducto} exact>
             <NuevoProducto enviarDatosProductos={enviarDatosProductos}/>
+            <ToastContainer />
           </Route>
 
         </Switch>
