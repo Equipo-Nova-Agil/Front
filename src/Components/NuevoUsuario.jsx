@@ -19,6 +19,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="nombre"
                                         type="text"
                                         placeholder="Nombre"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -29,6 +30,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="apellido"
                                         type="text"
                                         placeholder="Apellido"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -39,6 +41,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="edad"
                                         type="numeric"
                                         placeholder="Edad"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -48,6 +51,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         list="lista_genero"
                                         name="genero"
                                         placeholder="Seleccionar genero"
+                                        required
                                     />
                                     <datalist id="lista_genero">
                                         <option value="f"></option>
@@ -63,6 +67,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="correo"
                                         type="email"
                                         placeholder="Email"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -73,6 +78,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="telefono"
                                         type="tel"
                                         placeholder="Teléfono"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -83,6 +89,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="fecha_registro"
                                         type="date"
                                         placeholder="fecha de registro"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -93,6 +100,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="tipo"
                                         type="text"
                                         placeholder="Tipo"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -103,6 +111,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="direccion"
                                         type="text"
                                         placeholder="Direccion"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -113,6 +122,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         name="password"
                                         type="password"
                                         placeholder="Contraseña"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-4">
@@ -122,6 +132,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         list="lista_roles"
                                         name="id_rol"
                                         placeholder="Seleccionar rol"
+                                        required
                                     />
                                     <datalist id="lista_roles">
                                         {datosUsuarios.map(idu => (
@@ -136,6 +147,7 @@ const NuevoUsuario = ({enviarDatosUsuarios, datosUsuarios}) => {
                                         list="lista_estado"
                                         name="id_estado"
                                         placeholder="Seleccionar estado"
+                                        required
                                     />
                                     <datalist id="lista_estado">
                                         {datosUsuarios.map(idu => (

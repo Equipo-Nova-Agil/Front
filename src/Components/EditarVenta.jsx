@@ -102,6 +102,7 @@ const EditarVenta = ({putVenta}) => {
                                     placeholder="Id. Cliente"
                                     value={detallesVenta.id_usuario}
                                     onChange={modificarCampo("id_usuario")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -114,6 +115,7 @@ const EditarVenta = ({putVenta}) => {
                                     placeholder="Id. Producto"
                                     value={detallesVenta.id_producto}
                                     onChange={modificarCampo("id_producto")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -126,6 +128,7 @@ const EditarVenta = ({putVenta}) => {
                                     placeholder="Cantidad total"
                                     value={detallesVenta.cantidad}
                                     onChange={modificarCampo("cantidad")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -138,6 +141,7 @@ const EditarVenta = ({putVenta}) => {
                                     placeholder="Valor total"
                                     value={detallesVenta.precio}
                                     onChange={modificarCampo("precio")}
+                                    required
                                 />
                             </div>
                             {/* <div className="mb-4">

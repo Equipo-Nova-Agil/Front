@@ -148,6 +148,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Nombre"
                                     value={detallesUsuario.nombre}
                                     onChange={modificarCampo("nombre")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -160,6 +161,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Apellido"
                                     value={detallesUsuario.apellido}
                                     onChange={modificarCampo("apellido")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -172,6 +174,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Edad"
                                     value={detallesUsuario.edad}
                                     onChange={modificarCampo("edad")}
+                                    required
                                 />
                             </div>
                             {/* OPCIONAL CON SELECT */}
@@ -221,6 +224,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Teléfono"
                                     value={detallesUsuario.telefono}
                                     onChange={modificarCampo("telefono")}
+                                    required
                                 />
                             </div>
                         
@@ -234,6 +238,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Tipo"
                                     value={detallesUsuario.tipo}
                                     onChange={modificarCampo("tipo")}
+                                    required
                                 />
                             </div>
                      
@@ -247,6 +252,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Direccion"
                                     value={detallesUsuario.direccion}
                                     onChange={modificarCampo("direccion")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -259,6 +265,7 @@ const EditarUsuario = ({putUsuario}) => {
                                     placeholder="Contraseña"
                                     value={detallesUsuario.password}
                                     onChange={modificarCampo("password")}
+                                    required
                                 />
                             </div>
             

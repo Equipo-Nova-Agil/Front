@@ -34,6 +34,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
                                     name="id_usuario"
                                     type="text"
                                     placeholder="Id. Usuario"
+                                    required
                                 />
                                 <datalist id="cliente_id">
                                     {datosUsuarios.map(id => (
@@ -51,6 +52,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
                                     name="id_producto"
                                     type="text"
                                     placeholder="Id. Producto"
+                                    required
                                 />
                                 <datalist id="id_producto">
                                     {datosProductos.map(idp => (
@@ -69,6 +71,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
                                     name="cantidad"
                                     type="number" min="0" step="1"
                                     placeholder="Cantidad total"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -79,6 +82,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
                                     name="precio"
                                     type="number" min="0" step="1"
                                     placeholder="precio total"
+                                    required
                                 />
                             </div>
                             {/* <div className="mb-4">

@@ -114,6 +114,7 @@ const EditarProducto = ({putProducto}) => {
                                     placeholder="Nombre"
                                     value={detallesProducto.nombre}
                                     onChange={modificarCampo("nombre")}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -126,6 +127,7 @@ const EditarProducto = ({putProducto}) => {
                                     placeholder="precio"
                                     value={detallesProducto.precio}
                                     onChange={modificarCampo("precio")}
+                                    required
                                 />
                             </div>
 
@@ -138,6 +140,7 @@ const EditarProducto = ({putProducto}) => {
                                     placeholder="Seleccionar"
                                     value={detallesProducto.seccion}
                                     onChange={modificarCampo("seccion")}
+                                    required
                                 />                                
                             </div>
 

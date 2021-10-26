@@ -45,7 +45,7 @@ function App() {
 
   const filtrar = (terminoBusqueda) => {
     let resultadosBusquedaProductos = tablaUsuarios.filter(elemento => {
-      if (elemento.id_usuarios.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+      if (elemento.id_usuarios.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()) || elemento.nombre.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
         return elemento
       }
     })

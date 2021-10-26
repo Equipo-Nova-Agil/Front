@@ -43,6 +43,7 @@ const NuevoProducto = ({enviarDatosProductos}) => {
                                     name="nombre"
                                     type="text"
                                     placeholder="Nombre"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -53,6 +54,7 @@ const NuevoProducto = ({enviarDatosProductos}) => {
                                     name="precio"
                                     type="number" min="0" step="1"
                                     placeholder="precio"
+                                    required
                                 />
                             </div>
 
@@ -63,6 +65,7 @@ const NuevoProducto = ({enviarDatosProductos}) => {
                                     list="lista_seccion"
                                     name="seccion"
                                     placeholder="Seleccionar"
+                                    required
                                 />
                                 <datalist id="lista_seccion">
                                     {/* CREO, CREO QUE HAY QUE TRAER LA LISTA DE SECCION PARA QUE LAS OPCIONES SEAN LAS DE LA API PRODUCTO */}
