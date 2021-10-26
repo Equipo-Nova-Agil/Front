@@ -120,7 +120,7 @@ function App() {
       })
       .catch(error => {
           console.log(error)
-          toast.error("Servidor no encontrado", {
+          toast.error("No se pudo crear usuario, intente más tarde", {
           position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -161,7 +161,7 @@ function App() {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+        });
       })
   }
 
@@ -270,9 +270,29 @@ function App() {
           setDatosVentas((currentData) => [
               ...currentData, formDataVentas
           ])
+          if (res.status === 200 || res.status === 201){
+            toast.success('Venta Creada', {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
+          }
       })
       .catch(error => {
           console.log(error)
+          toast.error("No se pudo crear venta, intente más tarde", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });  
       })
 
   }
@@ -283,9 +303,29 @@ function App() {
     await axios.delete(`${baseUrlVentas}${id}`)
       .then(res => {
         setDatosVentas(datosVentas.filter(v => v.id_venta !== id))
+        if (res.status === 200 || res.status === 201){
+          toast.success('Venta Eliminada', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
       })
       .catch(error => {
         console.log(error)
+        toast.error("No se pudo eliminar venta, intente más tarde", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       })
   }
 
@@ -293,12 +333,32 @@ function App() {
 
   const putVenta = (id, infoVenta, successCallback) => {
     axios.put(`${baseUrlVentas}${id}`, infoVenta)
-      .then(() => {
+      .then((res) => {
         getVentas()
         successCallback()
+        if (res.status === 200){
+          toast.success("Venta editada", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       })
       .catch(error=> {
         console.log(error)
+        toast.error("No se pudo editar venta, intente más tarde", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
       })
   }
 
@@ -436,12 +496,15 @@ function App() {
 
           <Route path={rutas.ventas} exact>
             <Ventas deleteVenta={deleteVenta} datosVentas={datosVentas} filtroBusquedaVentas={filtroBusquedaVentas} getVentas={getVentas}/>
+            <ToastContainer />
           </Route>
           <Route path={rutas.editarVenta} exact>
             <EditarVenta putVenta={putVenta}/>
+            <ToastContainer />
           </Route>
           <Route path={rutas.nuevaVenta} exact>
             <NuevaVenta enviarDatosVentas={enviarDatosVentas} datosUsuarios={datosUsuarios} datosProductos={datosProductos} />
+            <ToastContainer />
           </Route>
 
 
