@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { useHistory } from 'react-router-dom'
+import Rutas from '../constantes/Rutas'
 
 const NuevoProducto = ({enviarDatosProductos}) => {
 
+    const history = useHistory()
     return (
         <>
         {/* <LayoutProductos> */}
@@ -12,7 +14,7 @@ const NuevoProducto = ({enviarDatosProductos}) => {
             <div className="flex flex-col mt-10 items-center">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
-                        <form id="formulario" onSubmit={enviarDatosProductos} className="bg-white p-3">
+                        <form id="formulario" onSubmit={(e) => enviarDatosProductos(e, () => {history.push(Rutas.productos)})} className="bg-white p-3">
                             {/* <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_producto">Identificador del Producto</label>
                                 <input 

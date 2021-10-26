@@ -1,6 +1,9 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
 
+import Rutas from './constantes/Rutas'
+import { useParams, useHistory } from 'react-router-dom'
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,6 +32,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
 function App() {
+
   
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
   // COMIENZO CODIGO DE USUARIOS*********************************************************************************************
@@ -82,7 +86,7 @@ function App() {
 
 
   // METODO POST USUARIOS
-  const enviarDatosUsuarios = async(e) => {
+  const enviarDatosUsuarios = async(e, successCallback) => {
     e.preventDefault()
     const formData = {
       id_usuarios: parseInt(uuidv4(), 16).toString().slice(2),
@@ -102,20 +106,22 @@ function App() {
   
     await axios.post(baseUrl, formData)
       .then(res => {
-          setDatosUsuarios((currentData) => [
-              ...currentData, formData
-          ])
-          if (res.status === 200 || res.status === 201){
-            toast.success('Usuario Creado', {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              });
-          }
+        getUsuarios()
+        successCallback()
+        setDatosUsuarios((currentData) => [
+            ...currentData, formData
+        ])
+        if (res.status === 200 || res.status === 201){
+          toast.success('Usuario Creado', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
           //console.log("http", res.status)
       })
       .catch(error => {
@@ -255,7 +261,7 @@ function App() {
 
 
   // METODO POST VENTAS
-  const enviarDatosVentas = async(e) => {
+  const enviarDatosVentas = async(e, successCallback) => {
     e.preventDefault()
     const formDataVentas = {
       id_venta: parseInt(uuidv4(), 16).toString().slice(2),
@@ -267,20 +273,22 @@ function App() {
   
     await axios.post(baseUrlVentas, formDataVentas)
       .then(res => {
-          setDatosVentas((currentData) => [
-              ...currentData, formDataVentas
-          ])
-          if (res.status === 200 || res.status === 201){
-            toast.success('Venta creada', {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              });
-          }
+        getVentas()
+        successCallback()
+        setDatosVentas((currentData) => [
+            ...currentData, formDataVentas
+        ])
+        if (res.status === 200 || res.status === 201){
+          toast.success('Venta creada', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
       })
       .catch(error => {
           console.log(error)
@@ -417,9 +425,8 @@ function App() {
 
 
   // METODO POST PRODUCTOS
-  const enviarDatosProductos = async(e) => {
+  const enviarDatosProductos = async(e, successCallback) => {
 
-    
     e.preventDefault()
     const formDataProductos = {
       id_producto: parseInt(uuidv4(), 16).toString().slice(2),
@@ -432,6 +439,8 @@ function App() {
     
     await axios.post(baseUrlProductos, formDataProductos)
     .then(res => {
+      getProductos()
+      successCallback()
       setDatosProductos((currentData) => [
         ...currentData, formDataProductos
       ])

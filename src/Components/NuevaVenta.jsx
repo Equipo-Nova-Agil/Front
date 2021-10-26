@@ -1,10 +1,12 @@
 import React from 'react'
-
+import { useHistory } from 'react-router-dom'
+import Rutas from '../constantes/Rutas'
 
 const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
 
-    console.log(datosProductos.id_producto)
-    console.log(datosUsuarios.id_usuarios)
+    // console.log(datosProductos.id_producto)
+    // console.log(datosUsuarios.id_usuarios)
+    const history = useHistory()
     
     return (
         <>
@@ -15,7 +17,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
             <div className="flex flex-col mt-10 items-center">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
-                        <form id="formulario" className="bg-white p-3" onSubmit={enviarDatosVentas}>
+                        <form id="formulario" className="bg-white p-3" onSubmit={(e) => enviarDatosVentas(e, () => {history.push(Rutas.usuarios)})}>
                             {/* <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_venta">Identificador de la venta</label>
                                 <input 
