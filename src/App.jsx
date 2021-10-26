@@ -1,6 +1,9 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from "axios"
 //import Login from "./Components/Login"
 import LayoutUniversal from './Components/LayoutUniversal';
@@ -102,9 +105,30 @@ function App() {
           setDatosUsuarios((currentData) => [
               ...currentData, formData
           ])
+          if (res.status === 200 || res.status === 201){
+            toast.success('Usuario Creado', {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
+          }
+          //console.log("http", res.status)
       })
       .catch(error => {
           console.log(error)
+          toast.error("Servidor no encontrado", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });          
       })
 
   }
@@ -115,9 +139,29 @@ function App() {
     await axios.delete(`${baseUrl}${id}`)
       .then(res => {
         setDatosUsuarios(datosUsuarios.filter(user => user.id_usuarios !== id))
+        if (res.status === 200 || res.status === 201){
+          toast.success('Usuario Eliminado', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
       })
       .catch(error => {
         console.log(error)
+        toast.error("No se pudo eliminar usuario, intente más tarde", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
       })
   }
 
@@ -125,12 +169,32 @@ function App() {
 
   const putUsuario = (id, infoUsuario, successCallback) => {
     axios.put(`${baseUrl}${id}`, infoUsuario)
-      .then(() => {
+      .then((res) => {
         getUsuarios()
         successCallback()
+        if (res.status === 200){
+          toast.success("Usuario editado", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       })
       .catch(error=> {
-          console.log(error)
+        console.log(error)
+        toast.error("No se pudo editar usuario, intente más tarde", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
       })
   }
 
@@ -357,12 +421,15 @@ function App() {
         <Switch>
           <Route path={rutas.usuarios} exact>
             <Usuarios deleteUsuario={deleteUsuario} datosUsuarios={datosUsuarios} filtroBusqueda={filtroBusqueda} getUsuarios={getUsuarios}/>
+            <ToastContainer />
           </Route>
           <Route path={rutas.editarUsuario} exact>
             <EditarUsuario putUsuario={putUsuario}/>
+            <ToastContainer />
           </Route>
           <Route path={rutas.nuevoUsuario} exact>
             <NuevoUsuario enviarDatosUsuarios={enviarDatosUsuarios} datosUsuarios={datosUsuarios}/>
+            <ToastContainer />
           </Route>
 
 

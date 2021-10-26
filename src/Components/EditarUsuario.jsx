@@ -3,6 +3,8 @@ import { useParams, useHistory } from 'react-router-dom'
 import Rutas from '../constantes/Rutas'
 import axios from 'axios'
 import "./tailwind.min.css" 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const mapearUsuario = (detalleUsuario) => ({
@@ -37,6 +39,7 @@ const EditarUsuario = ({putUsuario}) => {
             const {data} = await axios.get(`https://sleepy-forest-23219.herokuapp.com/api/usuario/${userId}`)
             setDetallesUsuario(mapearUsuario(data.Usuarios))
             setCargando(false)
+            
         }catch(nuevoError){
             setCargando(false)
             setError(nuevoError)
@@ -60,7 +63,8 @@ const EditarUsuario = ({putUsuario}) => {
                 history.push(Rutas.usuarios)
             }
         )
-    }
+        
+        }
 
 
    
