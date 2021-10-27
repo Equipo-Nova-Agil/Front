@@ -17,7 +17,7 @@ const NuevaVenta = ({enviarDatosVentas, datosUsuarios, datosProductos}) => {
             <div className="flex flex-col mt-10 items-center">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-10/12 md:w-8/12 lg:w-6/12">
                     <div className=" shadow overflow-hidden sm:rounded-lg border-b border-gray-200 ">
-                        <form id="formulario" className="bg-white p-3" onSubmit={(e) => enviarDatosVentas(e, () => {history.push(Rutas.usuarios)})}>
+                        <form id="formulario" className="bg-white p-3" onSubmit={(e) => enviarDatosVentas(e, () => {history.push(Rutas.ventas)})}>
                             {/* <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="id_venta">Identificador de la venta</label>
                                 <input 
